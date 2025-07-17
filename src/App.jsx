@@ -23,10 +23,6 @@ import './App.css';
 import portugalLandscape from './assets/portugal-landscape.jpg';
 import lisbonArchitecture from './assets/lisbon-architecture.jpg';
 import portugueseFood from './assets/portuguese-food.jpg';
-import zedoscornosImg from './assets/zedoscornos.jpg';
-import opescador from './assets/opescador.jpg';
-import algarveBeach from './assets/algarve-beach.jpg';
-import aforja from './assets/aforja.jpg';
 import portoCity from './assets/porto-city.jpg';
 import AdSense from './components/AdSense';
 
@@ -76,7 +72,7 @@ const App = () => {
       name: 'Zé dos Cornos',
       city: 'Lisbon',
       type: 'Traditional Tasca',
-      image: zedoscornosImg,
+      image: '/images/zedoscornos.jpg',
       description: 'Famous for their grilled ribs and authentic Portuguese atmosphere.',
       rating: 4.9,
       price: '€€',
@@ -87,7 +83,7 @@ const App = () => {
       name: 'O Pescador',
       city: 'Lagos',
       type: 'Seafood',
-      image: opescador,
+      image: '/images/opescador.jpg',
       description: 'Fresh fish and seafood in a no-frills Portuguese setting.',
       rating: 4.8,
       price: '€€',
@@ -98,7 +94,7 @@ const App = () => {
       name: 'A Forja',
       city: 'Lagos',
       type: 'Traditional',
-      image: aforja,
+      image: '/images/aforja.jpg',
       description: 'Traditional Portuguese restaurant serving regional specialties.',
       rating: 4.7,
       price: '€€',
