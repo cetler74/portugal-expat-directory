@@ -23,7 +23,10 @@ import './App.css';
 import portugalLandscape from './assets/portugal-landscape.jpg';
 import lisbonArchitecture from './assets/lisbon-architecture.jpg';
 import portugueseFood from './assets/portuguese-food.jpg';
+import zedoscornosImg from './assets/zedoscornos.jpg';
+import opescador from './assets/opescador.jpg';
 import algarveBeach from './assets/algarve-beach.jpg';
+import aforja from './assets/aforja.jpg';
 import portoCity from './assets/porto-city.jpg';
 import AdSense from './components/AdSense';
 
@@ -73,7 +76,7 @@ const App = () => {
       name: 'Zé dos Cornos',
       city: 'Lisbon',
       type: 'Traditional Tasca',
-      image: portugueseFood,
+      image: zedoscornosImg,
       description: 'Famous for their grilled ribs and authentic Portuguese atmosphere.',
       rating: 4.9,
       price: '€€',
@@ -84,7 +87,7 @@ const App = () => {
       name: 'O Pescador',
       city: 'Lagos',
       type: 'Seafood',
-      image: portugueseFood,
+      image: opescador,
       description: 'Fresh fish and seafood in a no-frills Portuguese setting.',
       rating: 4.8,
       price: '€€',
@@ -95,7 +98,7 @@ const App = () => {
       name: 'A Forja',
       city: 'Lagos',
       type: 'Traditional',
-      image: portugueseFood,
+      image: aforja,
       description: 'Traditional Portuguese restaurant serving regional specialties.',
       rating: 4.7,
       price: '€€',
@@ -469,6 +472,82 @@ const App = () => {
                   <p className="text-sm">Portuguese are warm and welcoming to foreigners</p>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Additional Cultural Sections */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            {/* Cultural Insights */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+              <h4 className="text-xl font-bold mb-2">Cultural Insights</h4>
+              <p className="mb-4 text-sm">Understanding Portuguese values, traditions, and social norms</p>
+              <ul className="list-disc list-inside mb-4 text-sm space-y-1">
+                <li>Family importance</li>
+                <li>Hospitality culture</li>
+                <li>Work-life balance</li>
+                <li>Religious traditions</li>
+              </ul>
+              <button className="mt-2 text-blue-200 underline">Learn More</button>
+            </div>
+            {/* Festivals & Events */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+              <h4 className="text-xl font-bold mb-2">Festivals & Events</h4>
+              <p className="mb-4 text-sm">Experience Portugal's vibrant festival calendar throughout the year</p>
+              <ul className="list-disc list-inside mb-4 text-sm space-y-1">
+                <li>Santos Populares</li>
+                <li>Festa da Flor</li>
+                <li>Festival de Fado</li>
+                <li>Local celebrations</li>
+              </ul>
+              <button className="mt-2 text-blue-200 underline">Learn More</button>
+            </div>
+            {/* Language Tips */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+              <h4 className="text-xl font-bold mb-2">Language Tips</h4>
+              <p className="mb-4 text-sm">Essential Portuguese phrases and language learning resources</p>
+              <ul className="list-disc list-inside mb-4 text-sm space-y-1">
+                <li>Basic phrases</li>
+                <li>Pronunciation guide</li>
+                <li>Language schools</li>
+                <li>Practice opportunities</li>
+              </ul>
+              <button className="mt-2 text-blue-200 underline">Learn More</button>
+            </div>
+            {/* Bureaucracy Guide */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+              <h4 className="text-xl font-bold mb-2">Bureaucracy Guide</h4>
+              <p className="mb-4 text-sm">Navigate Portuguese administrative processes with confidence</p>
+              <ul className="list-disc list-inside mb-4 text-sm space-y-1">
+                <li>NIF registration</li>
+                <li>SEF appointments</li>
+                <li>Healthcare system</li>
+                <li>Banking setup</li>
+              </ul>
+              <button className="mt-2 text-blue-200 underline">Learn More</button>
+            </div>
+            {/* Social Customs */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+              <h4 className="text-xl font-bold mb-2">Social Customs</h4>
+              <p className="mb-4 text-sm">Learn the unwritten rules of Portuguese social interactions</p>
+              <ul className="list-disc list-inside mb-4 text-sm space-y-1">
+                <li>Greeting etiquette</li>
+                <li>Dining customs</li>
+                <li>Business culture</li>
+                <li>Friendship building</li>
+              </ul>
+              <button className="mt-2 text-blue-200 underline">Learn More</button>
+            </div>
+            {/* Practical Living */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
+              <h4 className="text-xl font-bold mb-2">Practical Living</h4>
+              <p className="mb-4 text-sm">Day-to-day tips for living comfortably in Portugal</p>
+              <ul className="list-disc list-inside mb-4 text-sm space-y-1">
+                <li>Shopping habits</li>
+                <li>Transportation</li>
+                <li>Utilities setup</li>
+                <li>Emergency contacts</li>
+              </ul>
+              <button className="mt-2 text-blue-200 underline">Learn More</button>
             </div>
           </div>
 
