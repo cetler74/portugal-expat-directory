@@ -1,0 +1,127 @@
+"use client"
+
+import Link from "next/link"
+import { MapPin, Facebook, Instagram, Twitter } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+
+export function Footer() {
+  return (
+    <footer className="bg-ocean-blue text-white py-16">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center space-x-2 mb-4">
+              <MapPin className="h-8 w-8 text-sunshine-yellow" />
+              <span className="text-xl font-bold font-serif">Portugal Expat Directory</span>
+            </div>
+            <p className="text-white/80 mb-4">
+              Your trusted guide to living, eating, and experiencing Portugal as an expat.
+            </p>
+            <div className="flex space-x-4">
+              <Button variant="ghost" size="icon" className="text-white hover:text-sunshine-yellow">
+                <Facebook className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-white hover:text-sunshine-yellow">
+                <Instagram className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-white hover:text-sunshine-yellow">
+                <Twitter className="h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="#places-to-live" className="text-white/80 hover:text-white transition-colors">
+                  Places to Live
+                </Link>
+              </li>
+              <li>
+                <Link href="#places-to-eat" className="text-white/80 hover:text-white transition-colors">
+                  Places to Eat
+                </Link>
+              </li>
+              <li>
+                <Link href="#way-of-life" className="text-white/80 hover:text-white transition-colors">
+                  Way of Life
+                </Link>
+              </li>
+              <li>
+                <Link href="#about" className="text-white/80 hover:text-white transition-colors">
+                  About Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="#" className="text-white/80 hover:text-white transition-colors">
+                  Expat Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-white/80 hover:text-white transition-colors">
+                  Language Learning
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-white/80 hover:text-white transition-colors">
+                  Legal Advice
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-white/80 hover:text-white transition-colors">
+                  Community Forum
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
+            <p className="text-white/80 mb-4">
+              Get the latest expat tips and Portugal insights delivered to your inbox.
+            </p>
+            <div className="flex flex-col space-y-2">
+              <Input
+                placeholder="Your email address"
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+              />
+              <Button className="bg-terracotta hover:bg-terracotta/90 text-white">Subscribe</Button>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-white/20 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-white/60 text-sm">© 2024 Portugal Expat Directory. All rights reserved.</p>
+            <div className="flex items-center space-x-6 mt-4 md:mt-0">
+              <div className="flex space-x-6">
+                <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors">
+                  Terms of Service
+                </Link>
+                <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors">
+                  Contact
+                </Link>
+              </div>
+              <div className="text-white/60 text-sm">Made with Manus</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
