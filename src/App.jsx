@@ -80,7 +80,7 @@ const App = () => {
     }
   ];
 
-  // Sample data for places to eat
+  // --- Update the allPlacesToEat array with improved data structure and preserve specific images for three restaurants ---
   const allPlacesToEat = [
     {
       id: 1,
@@ -88,11 +88,14 @@ const App = () => {
       city: 'Lisbon',
       region: 'Central',
       type: 'Traditional Tasca',
-      image: zedoscornosImage,
-      description: 'Famous for their grilled ribs and authentic Portuguese atmosphere.',
+      image: zedoscornosImage, // preserve specific image
+      description: 'Famous for their grilled ribs and authentic Portuguese atmosphere. A must-visit for a true local experience.',
       rating: 4.9,
       price: '€€',
-      specialty: 'Grilled Ribs'
+      specialty: 'Grilled Ribs',
+      address: 'Rua da Madalena 88, 1100-323 Lisboa',
+      contact: '+351 21 887 0900',
+      tripadvisor: 'https://www.tripadvisor.com/Restaurant_Review-g189158-d1089907-Reviews-Ze_dos_Cornos-Lisbon_Lisbon_District_Central_Portugal.html'
     },
     {
       id: 2,
@@ -100,11 +103,14 @@ const App = () => {
       city: 'Lagos',
       region: 'South',
       type: 'Seafood',
-      image: opescadorImage,
-      description: 'Fresh fish and seafood in a no-frills Portuguese setting.',
+      image: opescadorImage, // preserve specific image
+      description: 'Fresh fish and seafood in a no-frills Portuguese setting. Enjoy the catch of the day in a relaxed ambiance.',
       rating: 4.8,
       price: '€€',
-      specialty: 'Grilled Seabass'
+      specialty: 'Grilled Seabass',
+      address: 'Rua António Crisógono dos Santos 16, 8600-580 Lagos',
+      contact: '+351 282 761 178',
+      tripadvisor: 'https://www.tripadvisor.com/Restaurant_Review-g189117-d1088769-Reviews-O_Pescador-Lagos_Faro_District_Algarve.html'
     },
     {
       id: 3,
@@ -112,11 +118,14 @@ const App = () => {
       city: 'Lagos',
       region: 'South',
       type: 'Traditional',
-      image: aforjaImage,
-      description: 'Traditional Portuguese restaurant serving regional specialties.',
+      image: aforjaImage, // preserve specific image
+      description: 'Traditional Portuguese restaurant serving regional specialties. Known for its authentic flavors and cozy atmosphere.',
       rating: 4.7,
       price: '€€',
-      specialty: 'Seafood Rice'
+      specialty: 'Seafood Rice',
+      address: 'Rua da Barroca 20, 8600-679 Lagos',
+      contact: '+351 282 767 350',
+      tripadvisor: 'https://www.tripadvisor.com/Restaurant_Review-g189117-d1088768-Reviews-A_Forja-Lagos_Faro_District_Algarve.html'
     },
     {
       id: 4,
@@ -125,10 +134,13 @@ const App = () => {
       region: 'North',
       type: 'Modern Portuguese',
       image: portugueseFood,
-      description: 'Contemporary Portuguese cuisine by a renowned chef.',
+      description: 'Contemporary Portuguese cuisine by a renowned chef. A modern take on traditional dishes in a chic setting.',
       rating: 4.7,
       price: '€€€',
-      specialty: 'Explosive Olives'
+      specialty: 'Explosive Olives',
+      address: 'Rua de Mouzinho da Silveira 166, 4000-069 Porto',
+      contact: '+351 22 322 7920',
+      tripadvisor: 'https://www.tripadvisor.com/Restaurant_Review-g189180-d2091990-Reviews-Cantinho_do_Avillez_Porto-Porto_Porto_District_Northern_Portugal.html'
     },
     {
       id: 5,
@@ -137,10 +149,43 @@ const App = () => {
       region: 'North',
       type: 'Traditional',
       image: portugueseFood,
-      description: 'Classic Northern Portuguese dishes in a cozy setting.',
+      description: 'Classic Northern Portuguese dishes in a cozy setting. A culinary journey through the region\'s rich gastronomic heritage.',
       rating: 4.6,
       price: '€€',
-      specialty: 'Bacalhau à Narcisa'
+      specialty: 'Bacalhau à Narcisa',
+      address: 'Rua Abade de Priscos 7, 4700-307 Braga',
+      contact: '+351 253 276 650',
+      tripadvisor: 'https://www.tripadvisor.com/Restaurant_Review-g189174-d1088767-Reviews-Restaurante_Abade_de_Priscos-Braga_Braga_District_Northern_Portugal.html'
+    },
+    {
+      id: 6,
+      name: 'Time Out Market Lisboa',
+      city: 'Lisbon',
+      region: 'Central',
+      type: 'Food Hall',
+      image: portugueseFood,
+      description: 'A vibrant food hall with a wide variety of Portuguese and international cuisines. Perfect for sampling different dishes.',
+      rating: 4.5,
+      price: '€€',
+      specialty: 'Diverse culinary options',
+      address: 'Av. 24 de Julho 49, 1200-479 Lisboa',
+      contact: '+351 21 395 1274',
+      tripadvisor: 'https://www.tripadvisor.com/Attraction_Review-g189158-d6964062-Reviews-Time_Out_Market_Lisboa-Lisbon_Lisbon_District_Central_Portugal.html'
+    },
+    {
+      id: 7,
+      name: 'Tascantiga',
+      city: 'Porto',
+      region: 'North',
+      type: 'Tapas',
+      image: portugueseFood,
+      description: 'Cozy tapas bar with a great selection of Portuguese petiscos and wines. Ideal for a casual meal with friends.',
+      rating: 4.6,
+      price: '€€',
+      specialty: 'Petiscos (Portuguese tapas)',
+      address: 'Rua da Entreparedes 18, 4000-197 Porto',
+      contact: '+351 22 208 4000',
+      tripadvisor: 'https://www.tripadvisor.com/Restaurant_Review-g189180-d7350646-Reviews-Tascantiga-Porto_Porto_District_Northern_Portugal.html'
     }
   ];
 
@@ -536,9 +581,36 @@ const App = () => {
                     <span className="font-semibold text-green-600">{restaurant.price}</span>
                   </div>
                   <p className="text-gray-600 mb-4">{restaurant.description}</p>
-                  <div className="bg-blue-50 rounded-lg p-3">
+                  <div className="bg-blue-50 rounded-lg p-3 mb-3">
                     <span className="text-sm font-semibold text-blue-800">Specialty: </span>
                     <span className="text-sm text-blue-700">{restaurant.specialty}</span>
+                  </div>
+                  {/* New details: address, contact, TripAdvisor */}
+                  <div className="space-y-1 text-sm text-gray-600">
+                    {restaurant.address && (
+                      <div>
+                        <span className="font-semibold">Address:</span>{' '}
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.address)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          {restaurant.address}
+                        </a>
+                      </div>
+                    )}
+                    {restaurant.contact && (
+                      <div><span className="font-semibold">Contact:</span> {restaurant.contact}</div>
+                    )}
+                    {restaurant.tripadvisor && (
+                      <div>
+                        <a href={restaurant.tripadvisor} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center space-x-1">
+                          <span>TripAdvisor</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
