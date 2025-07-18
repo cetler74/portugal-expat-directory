@@ -15,25 +15,36 @@ import {
   ArrowRight,
   Coffee,
   Home,
-  Waves
+  Waves,
+  BookOpen,
+  Landmark,
+  Handshake,
+  Briefcase,
+  Church,
+  Megaphone,
+  Speech,
+  FileText,
+  ShoppingBag,
+  Car,
+  Lightbulb,
+  Phone
 } from 'lucide-react';
 import './App.css';
-
-// Import images
 import portugalLandscape from './assets/portugal-landscape.jpg';
 import lisbonArchitecture from './assets/lisbon-architecture.jpg';
 import portugueseFood from './assets/portuguese-food.jpg';
+import algarveBeach from './assets/algarve-beach.jpg';
+import portoCity from './assets/porto-city.jpg';
 import zedoscornosImage from './assets/zedoscornos.jpg';
 import opescadorImage from './assets/opescador.jpg';
 import aforjaImage from './assets/aforja.jpg';
-import algarveBeach from './assets/algarve-beach.jpg';
-import portoCity from './assets/porto-city.jpg';
 import AdSense from './components/AdSense';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('All');
 
   // Sample data for places to live
   const placesToLive = [
@@ -70,11 +81,12 @@ const App = () => {
   ];
 
   // Sample data for places to eat
-  const placesToEat = [
+  const allPlacesToEat = [
     {
       id: 1,
       name: 'Zé dos Cornos',
       city: 'Lisbon',
+      region: 'Central',
       type: 'Traditional Tasca',
       image: zedoscornosImage,
       description: 'Famous for their grilled ribs and authentic Portuguese atmosphere.',
@@ -86,6 +98,7 @@ const App = () => {
       id: 2,
       name: 'O Pescador',
       city: 'Lagos',
+      region: 'South',
       type: 'Seafood',
       image: opescadorImage,
       description: 'Fresh fish and seafood in a no-frills Portuguese setting.',
@@ -97,14 +110,51 @@ const App = () => {
       id: 3,
       name: 'A Forja',
       city: 'Lagos',
+      region: 'South',
       type: 'Traditional',
       image: aforjaImage,
       description: 'Traditional Portuguese restaurant serving regional specialties.',
       rating: 4.7,
       price: '€€',
       specialty: 'Seafood Rice'
+    },
+    {
+      id: 4,
+      name: 'Cantinho do Avillez',
+      city: 'Porto',
+      region: 'North',
+      type: 'Modern Portuguese',
+      image: portugueseFood,
+      description: 'Contemporary Portuguese cuisine by a renowned chef.',
+      rating: 4.7,
+      price: '€€€',
+      specialty: 'Explosive Olives'
+    },
+    {
+      id: 5,
+      name: 'Restaurante Abade de Priscos',
+      city: 'Braga',
+      region: 'North',
+      type: 'Traditional',
+      image: portugueseFood,
+      description: 'Classic Northern Portuguese dishes in a cozy setting.',
+      rating: 4.6,
+      price: '€€',
+      specialty: 'Bacalhau à Narcisa'
     }
   ];
+
+  const filteredPlacesToEat = allPlacesToEat.filter(place => {
+    const matchesRegion = selectedRegion === 'All' || place.region === selectedRegion;
+    const matchesSearch =
+      place.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      place.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      place.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      place.specialty.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesRegion && matchesSearch;
+  });
+
+  const regions = ['All', ...new Set(allPlacesToEat.map(place => place.region))];
 
   // Cultural insights data
   const culturalInsights = [
@@ -122,6 +172,81 @@ const App = () => {
       title: 'Fado Music',
       description: 'The soulful Portuguese music that tells stories of life and longing.',
       icon: <Globe className="w-6 h-6" />
+    }
+  ];
+
+  const additionalCulturalInsights = [
+    {
+      title: 'Cultural Insights',
+      description: 'Understanding Portuguese values, traditions, and social norms.',
+      icon: <Landmark className="w-6 h-6" />,
+      subsections: [
+        { title: 'Family importance', description: '' },
+        { title: 'Hospitality culture', description: '' },
+        { title: 'Work-life balance', description: '' },
+        { title: 'Religious traditions', description: '' }
+      ],
+      link: '#'
+    },
+    {
+      title: 'Festivals & Events',
+      description: 'Experience Portugal\'s vibrant festival calendar throughout the year.',
+      icon: <Megaphone className="w-6 h-6" />,
+      subsections: [
+        { title: 'Santos Populares', description: '' },
+        { title: 'Festa da Flor', description: '' },
+        { title: 'Festival de Fado', description: '' },
+        { title: 'Local celebrations', description: '' }
+      ],
+      link: '#'
+    },
+    {
+      title: 'Language Tips',
+      description: 'Essential Portuguese phrases and language learning resources.',
+      icon: <Speech className="w-6 h-6" />,
+      subsections: [
+        { title: 'Basic phrases', description: '' },
+        { title: 'Pronunciation guide', description: '' },
+        { title: 'Language schools', description: '' },
+        { title: 'Practice opportunities', description: '' }
+      ],
+      link: '#'
+    },
+    {
+      title: 'Bureaucracy Guide',
+      description: 'Portuguese administrative processes with confidence.',
+      icon: <FileText className="w-6 h-6" />,
+      subsections: [
+        { title: 'NIF registration', description: '' },
+        { title: 'SEF appointments', description: '' },
+        { title: 'Healthcare system', description: '' },
+        { title: 'Banking setup', description: '' }
+      ],
+      link: '#'
+    },
+    {
+      title: 'Social Customs',
+      description: 'Learn the unwritten rules of Portuguese social interactions.',
+      icon: <Handshake className="w-6 h-6" />,
+      subsections: [
+        { title: 'Greeting etiquette', description: '' },
+        { title: 'Dining customs', description: '' },
+        { title: 'Business culture', description: '' },
+        { title: 'Friendship building', description: '' }
+      ],
+      link: '#'
+    },
+    {
+      title: 'Practical Living',
+      description: 'Day-to-day tips for living comfortably in Portugal.',
+      icon: <ShoppingBag className="w-6 h-6" />,
+      subsections: [
+        { title: 'Shopping habits', description: '' },
+        { title: 'Transportation', description: '' },
+        { title: 'Utilities setup', description: '' },
+        { title: 'Emergency contacts', description: '' }
+      ],
+      link: '#'
     }
   ];
 
@@ -163,7 +288,6 @@ const App = () => {
               <Waves className="w-8 h-8 text-blue-600" />
               <span className="text-xl font-bold text-gray-900">Portugal Expat Directory</span>
             </div>
-            
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {[
@@ -185,7 +309,6 @@ const App = () => {
                 </button>
               ))}
             </div>
-
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -195,7 +318,6 @@ const App = () => {
             </button>
           </div>
         </div>
-
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
@@ -225,7 +347,6 @@ const App = () => {
           )}
         </AnimatePresence>
       </nav>
-
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center">
         <div 
@@ -234,7 +355,6 @@ const App = () => {
         >
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
-        
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -245,7 +365,6 @@ const App = () => {
             Your Guide to
             <span className="block text-yellow-400">Expat Life in Portugal</span>
           </motion.h1>
-          
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -254,7 +373,6 @@ const App = () => {
           >
             Discover the best places to eat, live, and experience the Portuguese way of life
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -277,7 +395,6 @@ const App = () => {
             </button>
           </motion.div>
         </div>
-
         {/* AdSense Banner Placeholder */}
         <AdSense slot="3877669206" />
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
@@ -286,7 +403,6 @@ const App = () => {
           </div>
         </div>
       </section>
-
       {/* Search Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -303,7 +419,6 @@ const App = () => {
           </div>
         </div>
       </section>
-
       {/* Places to Live Section */}
       <section id="live" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -313,7 +428,6 @@ const App = () => {
               From vibrant cities to peaceful coastal towns, discover where expats thrive in Portugal
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {placesToLive.map((place, index) => (
               <motion.div
@@ -333,7 +447,6 @@ const App = () => {
                     {place.cost}
                   </div>
                 </div>
-                
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xl font-bold text-gray-900">{place.name}</h3>
@@ -342,9 +455,7 @@ const App = () => {
                       <span className="text-sm text-gray-600">{place.rating}</span>
                     </div>
                   </div>
-                  
                   <p className="text-gray-600 mb-4">{place.description}</p>
-                  
                   <div className="space-y-2">
                     {place.highlights.map((highlight, idx) => (
                       <div key={idx} className="flex items-center space-x-2 text-sm text-gray-600">
@@ -357,7 +468,6 @@ const App = () => {
               </motion.div>
             ))}
           </div>
-
           {/* AdSense Rectangle Placeholder */}
           <AdSense slot="3877669206" />
           <div className="flex justify-center mt-16">
@@ -367,7 +477,6 @@ const App = () => {
           </div>
         </div>
       </section>
-
       {/* Places to Eat Section */}
       <section id="eat" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -376,10 +485,24 @@ const App = () => {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               From traditional tascas to modern restaurants, taste the authentic flavors of Portugal
             </p>
+            <div className="mt-8 flex justify-center space-x-4">
+              {regions.map(region => (
+                <button
+                  key={region}
+                  onClick={() => setSelectedRegion(region)}
+                  className={`px-6 py-2 rounded-full text-lg font-semibold transition-colors ${
+                    selectedRegion === region
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  {region}
+                </button>
+              ))}
+            </div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {placesToEat.map((restaurant, index) => (
+            {filteredPlacesToEat.map((restaurant, index) => (
               <motion.div
                 key={restaurant.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -397,7 +520,6 @@ const App = () => {
                     {restaurant.type}
                   </div>
                 </div>
-                
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xl font-bold text-gray-900">{restaurant.name}</h3>
@@ -406,7 +528,6 @@ const App = () => {
                       <span className="text-sm text-gray-600">{restaurant.rating}</span>
                     </div>
                   </div>
-                  
                   <div className="flex items-center space-x-4 mb-3 text-sm text-gray-600">
                     <div className="flex items-center space-x-1">
                       <MapPin className="w-4 h-4" />
@@ -414,9 +535,7 @@ const App = () => {
                     </div>
                     <span className="font-semibold text-green-600">{restaurant.price}</span>
                   </div>
-                  
                   <p className="text-gray-600 mb-4">{restaurant.description}</p>
-                  
                   <div className="bg-blue-50 rounded-lg p-3">
                     <span className="text-sm font-semibold text-blue-800">Specialty: </span>
                     <span className="text-sm text-blue-700">{restaurant.specialty}</span>
@@ -427,7 +546,6 @@ const App = () => {
           </div>
         </div>
       </section>
-
       {/* Portuguese Culture Section */}
       <section id="culture" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -437,7 +555,6 @@ const App = () => {
               Understanding the culture, customs, and lifestyle that make Portugal special
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {culturalInsights.map((insight, index) => (
               <motion.div
@@ -455,9 +572,8 @@ const App = () => {
               </motion.div>
             ))}
           </div>
-
           {/* Cultural Tips */}
-          <div className="bg-gradient-to-r from-blue-600 to-orange-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-blue-600 to-orange-600 rounded-2xl p-8 text-white mb-16">
             <div className="max-w-4xl mx-auto text-center">
               <h3 className="text-3xl font-bold mb-4">Essential Cultural Tips</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
@@ -474,7 +590,35 @@ const App = () => {
               </div>
             </div>
           </div>
-
+          {/* Additional Cultural Insights */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {additionalCulturalInsights.map((insight, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow p-6"
+              >
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-600 text-white rounded-full">
+                    {insight.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">{insight.title}</h3>
+                </div>
+                <p className="text-gray-600 mb-4">{insight.description}</p>
+                <ul className="list-disc list-inside text-gray-600 space-y-1 mb-4">
+                  {insight.subsections.map((sub, idx) => (
+                    <li key={idx}>{sub.title}</li>
+                  ))}
+                </ul>
+                <a href={insight.link} className="text-blue-600 hover:underline flex items-center space-x-1">
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </motion.div>
+            ))}
+          </div>
           {/* AdSense Rectangle Placeholder */}
           <AdSense slot="3877669206" />
           <div className="flex justify-center mt-16">
@@ -484,7 +628,6 @@ const App = () => {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -498,7 +641,6 @@ const App = () => {
                 Your comprehensive guide to expat life in Portugal.
               </p>
             </div>
-            
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-400">
@@ -507,7 +649,6 @@ const App = () => {
                 <li><button onClick={() => scrollToSection('culture')} className="hover:text-white transition-colors">Culture</button></li>
               </ul>
             </div>
-            
             <div>
               <h4 className="font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-gray-400">
@@ -516,7 +657,6 @@ const App = () => {
                 <li><a href="#" className="hover:text-white transition-colors">Healthcare Guide</a></li>
               </ul>
             </div>
-            
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <p className="text-gray-400 mb-2">info@portugalexpatdirectory.com</p>
@@ -526,7 +666,6 @@ const App = () => {
               </div>
             </div>
           </div>
-          
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Portugal Expat Directory. All rights reserved.</p>
           </div>
